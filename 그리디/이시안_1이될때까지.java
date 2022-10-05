@@ -1,27 +1,19 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.StringTokenizer;
-
 public class Main {
-  public static void main(String[] args) throws IOException {
-    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    StringTokenizer st = new StringTokenizer(br.readLine());
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String str = br.readLine();
 
-    int N = Integer.parseInt(st.nextToken());
-    int K = Integer.parseInt(st.nextToken());
+        int result = 0;
 
-    int count = 0;
+        for (char c : str.toCharArray()) {
+            int value = Character.getNumericValue(c);
+            if (value <= 1 || result <= 1) {
+                result += value;
+                continue;
+            }
 
-    while (N != 1) {
-      count++;
-      if (N % K == 0) {
-        N /= K;
-        continue;
-      }
-      N--;
+            result *= value;
+        }
+        System.out.println(result);
     }
-    System.out.println(count);
-  }
 }
-
