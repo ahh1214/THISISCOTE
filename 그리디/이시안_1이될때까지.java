@@ -1,19 +1,21 @@
 public class Main {
-    public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String str = br.readLine();
+  public static void main(String[] args) throws IOException {
+    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    StringTokenizer st = new StringTokenizer(br.readLine());
 
-        int result = 0;
+    int N = Integer.parseInt(st.nextToken());
+    int K = Integer.parseInt(st.nextToken());
 
-        for (char c : str.toCharArray()) {
-            int value = Character.getNumericValue(c);
-            if (value <= 1 || result <= 1) {
-                result += value;
-                continue;
-            }
+    int count = 0;
 
-            result *= value;
-        }
-        System.out.println(result);
+    while (N != 1) {
+      count++;
+      if (N % K == 0) {
+        N /= K;
+        continue;
+      }
+      N--;
     }
+    System.out.println(count);
+  }
 }
