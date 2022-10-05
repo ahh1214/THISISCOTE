@@ -7,14 +7,13 @@ public class Main {
 
         for (char c : str.toCharArray()) {
             int value = Character.getNumericValue(c);
-            if (value == 0 || result == 0) {
+            if (value <= 1 || result <= 1) {
                 result += value;
                 continue;
             }
-          
+
             result *= value;
         }
-
         System.out.println(result);
     }
 }
